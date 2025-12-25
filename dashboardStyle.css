@@ -1,0 +1,421 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(190px, 1fr) minmax(0, 5fr);
+    grid-template-rows: 1fr 4fr;
+    grid-template-areas: "sidebar header" "sidebar main";
+}
+
+.header {
+    background-color: #BFCAEE;
+    width: 100%;
+    grid-area: header;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-rows: auto auto;
+    row-gap: 10px;
+    padding: clamp(8px, 2vw, 16px) clamp(12px, 3vw, 24px);
+}
+
+.sidebar {
+    background-color: #2A69A7;
+    grid-area: sidebar;
+    color: white;
+    padding: 10px;
+}
+
+.nav {
+    padding-top: 0.6rem;
+    display: grid;
+    grid-template-rows: repeat(9, 1.5fr);
+    gap: 10px;
+    align-content: start;
+    justify-content: center;
+}
+
+.main-content {
+    grid-area: main;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 2fr 0.7fr;
+    grid-template-areas:
+        "proj ann"
+        "proj trend";
+    gap: 20px;
+    background-color: #F9EEFE;
+    padding: 20px;
+    min-width: 0;
+}
+
+.brandingLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+.brandingLogo h2 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: clamp(1rem, 2vw, 2rem);
+    transform: translateX(-6px);
+}
+
+#logo {
+    font-size: 3rem;
+}
+
+
+.sidebarCard {
+    padding: 0 10px;
+    width: 100%;
+    height: 3rem;
+    max-width: 12rem;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    align-items: center;
+    font-size: clamp(14px, 1.5vw, 18px);
+    font-weight: bold;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.sidebarCard:hover {
+    background-color: #BFCAEE;
+    color: black;
+    transform: translateX(6px) translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.row1 {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 16px;
+    min-width: 0;
+}
+
+.row1col1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.row1col2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.row1col2 p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+    font-weight: bold;
+}
+
+.row2 {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 24px;
+    min-width: 0;
+}
+
+.profile {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+        "pfp hi"
+        "pfp name";
+    column-gap: 12px;
+    align-items: center;
+}
+
+
+#lowerPfp {
+    grid-area: pfp;
+}
+
+#p1 {
+    grid-area: hi;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+#h21 {
+    grid-area: name;
+}
+
+.row2col2 {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+
+.row2col2 button {
+    background-color: #5389C1;
+    color: white;
+    width: 7rem;
+    padding: 8px 10px;
+    border-radius: 20px;
+    border: 2px solid;
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #224783;
+    transform: translateX(6px) translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+
+#searchbar {
+    height: 2rem;
+    width: 100%;
+    max-width: 70%;
+    margin-left: 10px;
+    border-radius: 20px;
+}
+
+#upperPfp,
+#lowerPfp,
+.trendPfp {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+#upperPfp {
+    background-color: black;
+    border-radius: 50px;
+    height: 40px;
+    width: 40px;
+    background-image: url("blossom.jpg");
+}
+
+#lowerPfp {
+    background-color: black;
+    border-radius: 50px;
+    height: 60px;
+    width: 60px;
+    background-image: url("blossom.jpg");
+}
+
+.announcements,
+.trending {
+    min-width: 0;
+}
+
+
+.projects {
+    grid-area: proj;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.trending {
+    grid-area: trend;
+}
+
+.projectCard {
+    background-color: white;
+    height: 220px;
+    border-radius: 10px;
+    padding: 12px;
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+    gap: 10px;
+    border-left: 6px solid #162F62;
+}
+
+.iconList {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    align-self: end;
+    padding-right: 10px;
+    padding-bottom: 6px;
+}
+
+.projectDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.iconList i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    line-height: 1;
+}
+
+
+.iconList i:hover {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.announcements {
+    grid-area: ann;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.annList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: clamp(16px, 3vw, 32px);
+    width: 100%;
+    max-width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    max-height: 320px;
+    overflow-y: auto;
+    font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+}
+
+.ann {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.endLine {
+    border: 1px solid gray;
+    margin-bottom: 10px;
+}
+
+.trending {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.trendList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: clamp(16px, 3vw, 32px);
+    width: 100%;
+    max-width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    max-height: 320px;
+    overflow-y: auto;
+    font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+}
+
+.trend {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+        "pf un"
+        "pf subt";
+    row-gap: 6px;
+    column-gap: 14px;
+    align-items: center;
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
+}
+
+.trendPfp {
+    background-color: black;
+    border-radius: 50px;
+    height: 52px;
+    width: 52px;
+    grid-area: pf;
+}
+
+.trendPfp.buttercup {
+    background-image: url("buttercup.jpg");
+}
+
+.trendPfp.brick {
+    background-image: url("brick.jpg");
+}
+
+.trendPfp.bubbles {
+    background-image: url("bubbles.jpg");
+}
+
+.trendPfp.utonium {
+    background-image: url("prof1.jpg");
+}
+
+
+.trendUser {
+    grid-area: un;
+    font-weight: 600;
+}
+
+.trendSubtitle {
+    grid-area: subt;
+}
+
+.projectCard,
+.annList,
+.trendList {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+@media (max-width: 900px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "proj"
+            "ann"
+            "trend";
+    }
+
+    .announcements,
+    .trending {
+        margin-top: 16px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
